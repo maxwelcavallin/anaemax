@@ -95,9 +95,10 @@ img { max-width: 100%; display: block; }
   color: var(--branco);
   text-decoration: none;
   letter-spacing: 0.03em;
-  transition: color 0.35s ease;
+  text-shadow: 0 1px 6px rgba(8,44,68,0.5);
+  transition: color 0.35s ease, text-shadow 0.35s ease;
 }
-.site-nav.scrolled .nav-monogram { color: var(--marinho); }
+.site-nav.scrolled .nav-monogram { color: var(--marinho); text-shadow: none; }
 .nav-monogram span { color: var(--oliva-claro); }
 
 .nav-links {
@@ -117,9 +118,10 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.35s ease, opacity 0.25s ease;
+  text-shadow: 0 1px 6px rgba(8,44,68,0.5);
+  transition: color 0.35s ease, opacity 0.25s ease, text-shadow 0.35s ease;
 }
-.site-nav.scrolled .nav-link { color: var(--marinho); }
+.site-nav.scrolled .nav-link { color: var(--marinho); text-shadow: none; }
 .nav-link:hover { opacity: 1; }
 .nav-link--muted { opacity: 0.72; }
 
@@ -750,12 +752,9 @@ img { max-width: 100%; display: block; }
      acompanhar esse formato, senao o nome sai do halo e perde contraste. */
   .hero-scrim {
     background:
-      radial-gradient(ellipse 96% 40% at 50% 34%, rgba(8,44,68,0.7) 0%, rgba(8,44,68,0.38) 60%, rgba(8,44,68,0) 100%),
+      radial-gradient(ellipse 96% 42% at 50% 48%, rgba(8,44,68,0.7) 0%, rgba(8,44,68,0.38) 60%, rgba(8,44,68,0) 100%),
       linear-gradient(180deg, rgba(8,44,68,0.52) 0%, rgba(8,44,68,0.16) 22%, rgba(11,61,94,0.18) 62%, rgba(8,44,68,0.54) 100%);
   }
   .hero-bg img { object-position: center 32%; }
 
-  /* Sobe o bloco de texto para o ceu: centralizado, ele caia exatamente sobre
-     o beijo, que e o ponto da pintura que a gente quer mostrar. */
-  .hero-content { margin-bottom: 17vh; }
 }

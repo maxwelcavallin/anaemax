@@ -33,8 +33,8 @@ não entram no repositório: são cerca de 3 MB cada e não mudam.
 
 | arquivo | de onde vem | onde aparece |
 | --- | --- | --- |
-| `hero-casal` | aquarela do casal com o casarão e o Cristo | fundo do topo, em telas largas |
-| `hero-casal-retrato` | mesma aquarela, recorte 3:4 | fundo do topo, no celular |
+| `hero-varanda` | aquarela da varanda com os ipês e o Corcovado | fundo do topo, em telas largas |
+| `hero-varanda-retrato` | mesma aquarela, recorte 3:4 | fundo do topo, no celular |
 | `local-rio` | aquarela do Pão de Açúcar visto do mirante | seção "Uma cidade maravilhosa" |
 | `faixa-varanda` | aquarela do casal na varanda | faixa entre a história e o local |
 | `og-cover` | recorte 1200×630 da aquarela do casal | prévia no WhatsApp e nas redes |

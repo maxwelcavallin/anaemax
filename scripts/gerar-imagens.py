@@ -25,7 +25,8 @@ DESTINO = os.path.join(RAIZ, "assets", "img")
 AQUARELAS = os.path.join(FONTE, "Aquarelas", "Aquarela paleta (atual)")
 
 # As escolhas de cada arte, e o porque de cada uma.
-CASAL_MANSAO = os.path.join(AQUARELAS, "ChatGPT Image 18 de ago. de 2026, 12_57_29.png")   # hero: o casal, o casarao e o Cristo ao fundo
+VARANDA_CORCOVADO = os.path.join(AQUARELAS, "ChatGPT Image 18 de ago. de 2026, 12_32_44.png")  # hero: a varanda do casarao com o Corcovado ao fundo
+CASAL_MANSAO = os.path.join(AQUARELAS, "ChatGPT Image 18 de ago. de 2026, 12_57_29.png")   # compartilhamento: o casal, o casarao e o Cristo
 VISTA_RIO = os.path.join(AQUARELAS, "ChatGPT Image 18 de ago. de 2026, 12_24_25.png")      # local: o Pao de Acucar visto do mirante
 CASAL_VARANDA = os.path.join(AQUARELAS, "ChatGPT Image 18 de jun. de 2026, 20_33_40.png")  # faixa: o casal na varanda
 MONOGRAMA = os.path.join(FONTE, "monograma ANAe.png")  # o unico dos tres com canal alfa de verdade
@@ -69,19 +70,18 @@ def recortar_proporcao(im, proporcao, ancora=0.5):
 def main():
     os.makedirs(DESTINO, exist_ok=True)
 
-    # 1. Hero -- 3:2 e nao a arte inteira: o hero cobre a tela e o corte no
-    #    navegador seria arbitrario. Ancorado no alto para nao decapitar o casal.
-    hero = recortar_proporcao(abrir(CASAL_MANSAO), 3 / 2, ancora=0.12)
-    salvar_par(hero, "hero-casal", 1800, qualidade=84)
+    # 1. Hero -- a arte ja nasce em 3:2, entao o recorte so confirma a proporcao.
+    hero = recortar_proporcao(abrir(VARANDA_CORCOVADO), 3 / 2, ancora=0.5)
+    salvar_par(hero, "hero-varanda", 1800, qualidade=84)
 
-    # 1b. Hero em retrato -- no celular o corte 3:2 ampliava um pedaco liso da
-    #     parede e a aquarela virava um degrade. Este recorte guarda o casal e o
-    #     casarao dentro da tela vertical.
-    retrato = abrir(CASAL_MANSAO).convert("RGB")
+    # 1b. Hero em retrato -- no celular o corte 3:2 ampliaria um pedaco liso da
+    #     parede e a aquarela viraria um degrade. Este recorte vertical mantem o
+    #     Corcovado, as flores e o inicio da varanda dentro da tela.
+    retrato = abrir(VARANDA_CORCOVADO).convert("RGB")
     alvo_l = round(retrato.height * 3 / 4)
-    esq = min(max(round(retrato.width * 0.62 - alvo_l / 2), 0), retrato.width - alvo_l)
+    esq = min(max(round(retrato.width * 0.46 - alvo_l / 2), 0), retrato.width - alvo_l)
     retrato = retrato.crop((esq, 0, esq + alvo_l, retrato.height))
-    salvar_par(retrato, "hero-casal-retrato", 900, qualidade=84)
+    salvar_par(retrato, "hero-varanda-retrato", 900, qualidade=84)
 
     # 2. Local -- a vista do Rio, no lugar do line art que vinha quebrado.
     salvar_par(abrir(VISTA_RIO), "local-rio", 1400)
@@ -91,6 +91,8 @@ def main():
     salvar_par(faixa, "faixa-varanda", 1800)
 
     # 4. Compartilhamento -- 1200x630 e o formato que WhatsApp e redes esperam.
+    #    Aqui fica o casal: a previa de link e o unico lugar onde a arte aparece
+    #    sozinha, sem texto por cima, e o casal e o que convida a abrir.
     og = recortar_proporcao(abrir(CASAL_MANSAO), 1200 / 630, ancora=0.16)
     salvar_par(og, "og-cover", 1200, qualidade=86)
 
