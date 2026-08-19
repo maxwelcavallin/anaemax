@@ -1,0 +1,9 @@
+# Sistema
+Thumbs.db
+.DS_Store
+
+# Vercel
+.vercel
+
+# Rascunho local
+_preview-*.html
