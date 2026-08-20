@@ -483,18 +483,6 @@ img { max-width: 100%; display: block; }
 
 .story-spacer { min-height: 1px; }
 
-.historia-nota {
-  max-width: 620px;
-  margin: 0 auto;
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--marinho);
-  background: var(--algodao);
-  border: 1px dashed var(--areia);
-  border-radius: 14px;
-  padding: 18px 26px;
-}
-
 /* =========================================================
    LOCAL
    ========================================================= */

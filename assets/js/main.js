@@ -1,5 +1,5 @@
 // ============================================================
-// Ana Flávia & Maxwel — Save the Date
+// Ana Flávia & Maxwel · Save the Date
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", function () {
