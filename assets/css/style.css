@@ -150,6 +150,8 @@ img { max-width: 100%; display: block; }
 
 .nav-toggle {
   display: none;
+  position: relative;
+  z-index: 100;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -167,6 +169,8 @@ img { max-width: 100%; display: block; }
   transition: background 0.35s ease, transform 0.3s ease, opacity 0.3s ease;
 }
 .site-nav.scrolled .nav-toggle span { background: var(--marinho); }
+.nav-toggle.open span,
+.site-nav.scrolled .nav-toggle.open span { background: var(--branco); }
 
 /* =========================================================
    HERO
@@ -736,6 +740,14 @@ img { max-width: 100%; display: block; }
   .nav-links.open { transform: translateX(0); }
   .nav-links .nav-link { color: var(--branco); font-size: 13px; }
   .nav-links .pill { color: var(--areia); }
+
+  /* Com o painel aberto os itens ficam sobre o marinho. Sem isto, a barra
+     rolada os pintava de marinho tambem e o menu abria em branco. */
+  .nav-links.open .nav-link,
+  .site-nav.scrolled .nav-links.open .nav-link {
+    color: var(--branco);
+    text-shadow: none;
+  }
 
   .nav-toggle { display: flex; }
   .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }

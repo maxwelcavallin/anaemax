@@ -19,17 +19,33 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ---- Mobile menu toggle ---- */
   var toggle = document.getElementById("navToggle");
   var links = document.getElementById("navLinks");
+
+  function closeMenu() {
+    links.classList.remove("open");
+    toggle.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+
   toggle.addEventListener("click", function () {
     var isOpen = links.classList.toggle("open");
     toggle.classList.toggle("open", isOpen);
     toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
+
   links.querySelectorAll("a").forEach(function (a) {
-    a.addEventListener("click", function () {
-      links.classList.remove("open");
-      toggle.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-    });
+    a.addEventListener("click", closeMenu);
+  });
+
+  // Tocar fora fecha. O clique no proprio botao e ignorado aqui, senao ele
+  // abriria e fecharia no mesmo toque, quando o evento sobe ate o documento.
+  document.addEventListener("click", function (event) {
+    if (!links.classList.contains("open")) return;
+    if (links.contains(event.target) || toggle.contains(event.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" || event.key === "Esc") closeMenu();
   });
 
   /* ---- Countdown ---- */
