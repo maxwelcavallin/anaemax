@@ -89,17 +89,23 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-monogram {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--branco);
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  letter-spacing: 0.03em;
-  text-shadow: 0 1px 6px rgba(8,44,68,0.5);
-  transition: color 0.35s ease, text-shadow 0.35s ease;
 }
-.site-nav.scrolled .nav-monogram { color: var(--marinho); text-shadow: none; }
-.nav-monogram span { color: var(--oliva-claro); }
+.nav-monogram img {
+  display: block;
+  width: auto;
+  height: 40px;
+  /* Sobre a aquarela o traco vai de branco, com sombra para nao sumir no ceu.
+     Quando a barra ganha fundo de algodao, o PNG volta ao marinho original. */
+  filter: brightness(0) invert(1) drop-shadow(0 1px 6px rgba(8,44,68,0.5));
+  transition: filter 0.35s ease, height 0.35s ease;
+}
+.site-nav.scrolled .nav-monogram img {
+  height: 34px;
+  filter: none;
+}
 
 .nav-links {
   display: flex;
@@ -123,6 +129,7 @@ img { max-width: 100%; display: block; }
 }
 .site-nav.scrolled .nav-link { color: var(--marinho); text-shadow: none; }
 .nav-link:hover { opacity: 1; }
+.site-nav.scrolled .nav-link:hover { color: var(--oliva); }
 .nav-link--muted { opacity: 0.72; }
 
 .pill {
@@ -343,7 +350,7 @@ img { max-width: 100%; display: block; }
 .countdown-sep {
   font-family: var(--serif);
   font-size: clamp(24px, 4vw, 40px);
-  color: var(--areia);
+  color: var(--oliva-claro);
   transform: translateY(-8px);
 }
 
@@ -404,7 +411,7 @@ img { max-width: 100%; display: block; }
   left: 50%;
   width: 1px;
   transform: translateX(-50%);
-  background: repeating-linear-gradient(180deg, var(--areia) 0 8px, transparent 8px 16px);
+  background: repeating-linear-gradient(180deg, rgba(94,125,97,0.6) 0 8px, transparent 8px 16px);
   z-index: 0;
 }
 
@@ -461,11 +468,11 @@ img { max-width: 100%; display: block; }
   height: 56px;
   border-radius: 50%;
   background: var(--branco);
-  border: 1.4px solid var(--marinho);
+  border: 1.4px solid var(--oliva);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--marinho);
+  color: var(--oliva);
   margin: 0 auto;
 }
 .story-node svg { width: 24px; height: 24px; }
@@ -522,7 +529,7 @@ img { max-width: 100%; display: block; }
   position: relative;
   z-index: 1;
   border-radius: 4px;
-  border: 1px solid var(--areia);
+  border: 1px solid rgba(94,125,97,0.4);
   box-shadow: 0 18px 40px rgba(11,61,94,0.10);
 }
 
@@ -623,11 +630,11 @@ img { max-width: 100%; display: block; }
   height: 56px;
   border-radius: 50%;
   background: var(--branco);
-  border: 1.4px solid var(--marinho);
+  border: 1.4px solid var(--oliva);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--marinho);
+  color: var(--oliva);
   margin: 0 auto 18px;
 }
 .future-icon svg { width: 26px; height: 26px; }
@@ -659,6 +666,8 @@ img { max-width: 100%; display: block; }
   color: var(--areia);
   text-align: center;
   padding: 56px 20px 40px;
+  /* Um fio de oliva fecha a pagina: as duas primarias juntas, na mesma linha. */
+  border-top: 3px solid var(--oliva);
 }
 
 .footer-monogram {
