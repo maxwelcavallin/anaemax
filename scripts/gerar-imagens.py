@@ -25,7 +25,7 @@ DESTINO = os.path.join(RAIZ, "assets", "img")
 AQUARELAS = os.path.join(FONTE, "Aquarelas", "Aquarela paleta (atual)")
 
 # As escolhas de cada arte, e o porque de cada uma.
-VARANDA_CORCOVADO = os.path.join(AQUARELAS, "ChatGPT Image 18 de ago. de 2026, 12_32_44.png")  # hero: a varanda do casarao com o Corcovado ao fundo
+VARANDA_CORCOVADO = os.path.join(AQUARELAS, "ChatGPT Image 18 de jun. de 2026, 20_41_18.png")  # hero: a varanda do casarao com o Corcovado ao fundo
 CASAL_MANSAO = os.path.join(AQUARELAS, "ChatGPT Image 18 de ago. de 2026, 12_57_29.png")   # compartilhamento: o casal, o casarao e o Cristo
 VISTA_RIO = os.path.join(AQUARELAS, "ChatGPT Image 18 de ago. de 2026, 12_24_25.png")      # local: o Pao de Acucar visto do mirante
 CASAL_VARANDA = os.path.join(AQUARELAS, "ChatGPT Image 18 de jun. de 2026, 20_33_40.png")  # faixa: o casal na varanda
@@ -76,10 +76,12 @@ def main():
 
     # 1b. Hero em retrato -- no celular o corte 3:2 ampliaria um pedaco liso da
     #     parede e a aquarela viraria um degrade. Este recorte vertical mantem o
-    #     Corcovado, as flores e o inicio da varanda dentro da tela.
+    #     Corcovado, as flores e o inicio da varanda dentro da tela. A ancora
+    #     esta a esquerda do centro porque a tela do celular e mais estreita que
+    #     3:4: o `object-fit: cover` ainda come as laterais deste recorte.
     retrato = abrir(VARANDA_CORCOVADO).convert("RGB")
     alvo_l = round(retrato.height * 3 / 4)
-    esq = min(max(round(retrato.width * 0.46 - alvo_l / 2), 0), retrato.width - alvo_l)
+    esq = min(max(round(retrato.width * 0.38 - alvo_l / 2), 0), retrato.width - alvo_l)
     retrato = retrato.crop((esq, 0, esq + alvo_l, retrato.height))
     salvar_par(retrato, "hero-varanda-retrato", 900, qualidade=84)
 
