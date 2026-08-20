@@ -390,6 +390,14 @@ img { max-width: 100%; display: block; }
   border: none;
 }
 
+.historia-epigrafe p { margin: 0 0 16px; }
+.historia-epigrafe p:last-of-type { margin-bottom: 0; }
+
+/* Fecho da secao: mesma voz da epigrafe, so que depois da linha do tempo. */
+.historia-fecho {
+  margin: 44px auto 0;
+}
+
 .historia-assinatura {
   display: block;
   margin-top: 18px;
@@ -441,6 +449,10 @@ img { max-width: 100%; display: block; }
 .story-item:not(.story-item--right) .story-card { text-align: right; }
 .story-item--right .story-card { text-align: left; }
 
+/* O ano e o titulo continuam espelhados, encostados na linha do tempo. Os
+   paragrafos, nao: texto longo alinhado a direita fica cansativo de ler. */
+.story-card .story-text { text-align: left; }
+
 .story-year {
   display: inline-block;
   font-family: var(--serif);
@@ -466,6 +478,8 @@ img { max-width: 100%; display: block; }
   opacity: 0.72;
   margin: 0;
 }
+/* Cada capitulo agora tem varios paragrafos: eles precisam respirar entre si. */
+.story-text + .story-text { margin-top: 11px; }
 
 .story-node {
   width: 56px;
@@ -713,7 +727,10 @@ img { max-width: 100%; display: block; }
   .story-node { width: 48px; height: 48px; }
   .story-node svg { width: 20px; height: 20px; }
 
-  .story-item .story-card,
+  /* No mobile a linha do tempo vira uma coluna so, entao nao ha o que
+     espelhar. O seletor precisa da mesma especificidade do espelhamento
+     do desktop, senao os cards da esquerda continuam alinhados a direita. */
+  .story-item:not(.story-item--right) .story-card,
   .story-item--right .story-card {
     text-align: left;
   }
