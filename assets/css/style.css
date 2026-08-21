@@ -560,6 +560,16 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 0 0 5px rgba(94,125,97,0.18);
 }
 
+.map-pin-data {
+  position: relative;
+  z-index: 2;
+  margin: 4px 0 0;
+  font-family: var(--serif);
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  color: var(--oliva);
+}
+
 .local-nota {
   max-width: 480px;
   margin: 0 auto;
